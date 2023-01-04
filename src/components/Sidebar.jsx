@@ -10,7 +10,7 @@ import avatar from "../assets/avatar.jpg";
 const Sidebar = () => {
   const { activeBtn } = useStateContext();
 
-  const activeLink = 'text-[#00A186] bg-[#E0F4F1] h-12 w-12 flex items-center justify-around text-2xl rounded-xl'
+  const activeLink = 'text-[#00A186] bg-[#E0F4F1] h-12 w-12 flex items-center justify-around text-2xl rounded-xl navButton'
   const normalLink = 'text-[#BAC1CA] h-12 w-12 flex items-center justify-around text-2xl hover:rounded-xl hover:text-[#00A186] focus:bg-[#E0F4F1] focus:rounded-xl focus:text-[#00A186]'
   return (
     <div className="py-10 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 flex flex-col w-full justify-between items-center">
@@ -35,7 +35,7 @@ const Sidebar = () => {
         )}
       </div>
       <div className="">
-        <img src={avatar} alt="avatar" className="rounded-full w-14 h-14" />
+        <img src={avatar} alt="avatar" className="rounded-full w-8 h-8" />
       </div>
     </div>
   );

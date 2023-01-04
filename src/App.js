@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="flex flex-row">
-        <div className="w-24 bg-white">
+        <div className="w-20 bg-white">
           <Sidebar />
         </div>
         <Routes>

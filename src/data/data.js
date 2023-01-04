@@ -8,23 +8,7 @@ export const links = [
         icon: <BsPeopleFill />,
       },
       {
-        name: "detail",
-        icon: <BsPeopleFill />,
-      },
-      {
-        name: "home",
-        icon: <BsPeopleFill />,
-      },
-      {
-        name: "test",
-        icon: <BsPeopleFill />,
-      },
-      {
         name: "bling",
-        icon: <BsPeopleFill />,
-      },
-      {
-        name: "ting",
         icon: <BsPeopleFill />,
       },
     ],
