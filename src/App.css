@@ -30,33 +30,3 @@
   background-color: rgba(237, 242, 247, var(--bg-opacity));
   border-radius: 2.35rem;
 }
-
-/* @media only screen and (max-width: 600px) {
-  .navSide {
-    width: 100%;
-  }
-
-  .navSideWelcome {
-    display: none;
-  }
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  .navSide {
-    width: 100%;
-  }
-
-  .navSideWelcome {
-    display: none;
-  }
-}
-
-@media only screen and (min-width: 1224px) {
-  .navSide {
-    width: 24rem;
-  }
-
-  .navSideWelcome {
-    width: 100%;
-  }
-} */

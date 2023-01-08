@@ -8,8 +8,10 @@ const StateContext = createContext();
 // };
 
 export const ContextProvider = ({ children }) => {
-  const [activeChat, setActiveChat] = useState(true);
+  const [activeChat, setActiveChat] = useState(false);
   const [activeBtn, setActiveBtn] = useState("#E0F4F1");
+  const [toggleChat, setToggleChat] = useState(true);
+  const [toggleShared, setToggleShared] = useState(true);
 
   return (
     <StateContext.Provider
@@ -18,6 +20,10 @@ export const ContextProvider = ({ children }) => {
         setActiveChat,
         activeBtn,
         setActiveBtn,
+        toggleChat,
+        setToggleChat,
+        toggleShared,
+        setToggleShared,
       }}
     >
       {children}

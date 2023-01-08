@@ -4,8 +4,8 @@ import welcome from '../../assets/welcome.jpg'
 
 const Welcome = () => {
   return (
-    <div className='flex justify-center items-center bg-[#E0F4F1] my-6 rounded-2xl w-full h-full md:hidden'>
-        <img src={welcome} alt="welcome" className='object-cover' />
+    <div className='flex justify-center items-center p bg-[#E0F4F1] my-6 rounded-2xl h-11/12 px-48 xl:w-full lg:w-full'>
+        <img src={welcome} alt="welcome" className='object-cover rounded-xl' />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FiSettings } from "react-icons/fi";
@@ -6,13 +7,90 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxDotsVertical } from "react-icons/rx";
 
+import {useStateContext} from '../../context/ContextProvider'
+
 import avatar from "../../assets/avatar.jpg";
 
+const conversations = [
+  {
+    id: 1,
+    image: avatar,
+    name: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    latestMessage: "Testing 123",
+    dateTime: "10:05",
+  },
+  {
+    id: 2,
+
+    image: avatar,
+    name: "Donec auctor dictum nisl, et dictum erat malesuada eget",
+    latestMessage: "et dictum erat malesuada eget",
+    dateTime: "10:05",
+  },
+  {
+    id: 3,
+
+    image: avatar,
+    name: "Evan Scott",
+    latestMessage: "et dictum erat malesuada eget",
+
+    dateTime: "10:05",
+  },
+  {
+    id: 4,
+
+    image: avatar,
+    name: "Jonjet Kalson",
+    latestMessage: "et dictum erat malesuada eget",
+
+    dateTime: "10:05",
+  },
+  {
+    id: 5,
+
+    image: avatar,
+    name: "Commodi minima",
+    latestMessage: "et dictum erat malesuada eget",
+
+    dateTime: "10:05",
+  },
+  {
+    id: 6,
+
+    image: avatar,
+    name: "Quaerat",
+    latestMessage: "et dictum erat malesuada eget",
+
+    dateTime: "10:05",
+  },
+  {
+    id: 7,
+
+    image: avatar,
+    name: "Possimus",
+    latestMessage: "et dictum erat malesuada eget",
+
+    dateTime: "10:05",
+  },
+  {
+    id: 8,
+
+    image: avatar,
+    name: "Real estate deals Billing",
+    latestMessage: "et dictum erat malesuada eget",
+
+    dateTime: "10:05",
+  },
+];
+
 const ChatSidebar = () => {
+
+  const {setToggleChat} = useStateContext()
+
   return (
-    <div className="flex flex-col w-96 px-4 overflow-y-hidden flex-shrink-0 md:w-full">
-      <div className="flex flex-row items-start h-36 pt-16 relative">
-        <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky">
+    <div className="flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-96">
+      <div className="flex flex-row items-start h-36 pt-16 relative navChat">
+        <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleChat(prev => !prev)}>
           <IoIosArrowBack />
         </button>
         <h2 className="text-xl pl-8">Chat</h2>
@@ -61,175 +139,28 @@ const ChatSidebar = () => {
         </div>
 
         <div className="flex flex-col space-y-1 h-96 overflow-y-auto">
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
-          <a className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]">
-            <img src={avatar} alt="chat" className="w-11 h-11 rounded-full" />
-            {/* status here */}
-            <div className="px-3 w-full flex flex-col justify-between">
-              <h5 className="text-xl text-bold truncate">
-                Real estate deals bling bling bang bang
-              </h5>
-              <p className="text-sm text-gray-400 truncate">
-                I will send the document later, please wait for me
-              </p>
-            </div>
-            <p className="text-gray-500 text-md">10:05</p>
-          </a>
+          {conversations &&
+            conversations.map((val, idx) => (
+              <Link
+                to={`/message/${val.id}`}
+                key={idx}
+                className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]"
+              >
+                <img
+                  src={val.image}
+                  alt="chat"
+                  className="w-11 h-11 rounded-full"
+                />
+                {/* status here */}
+                <div className="px-3 w-full flex flex-col justify-between">
+                  <h5 className="text-xl text-bold truncate">{val.name}</h5>
+                  <p className="text-sm text-gray-400 truncate">
+                    {val.latestMessage}
+                  </p>
+                </div>
+                <p className="text-gray-500 text-md">{val.dateTime}</p>
+              </Link>
+            ))}
         </div>
       </div>
     </div>
