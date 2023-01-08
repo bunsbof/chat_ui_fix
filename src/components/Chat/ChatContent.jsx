@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FiSend } from "react-icons/fi";
 import { BsEmojiSmile } from "react-icons/bs";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -119,7 +119,7 @@ const message = [
 
 const ChatContent = () => {
   const { conversationId } = useParams();
-  const { toggleChat, setToggleChat, toggleShared, setToggleShared } =
+  const { activeChat, toggleChat, setToggleChat, toggleShared, setToggleShared } =
     useStateContext();
 
   const onSubmitForm = (e) => {
@@ -127,9 +127,9 @@ const ChatContent = () => {
   };
 
   return (
-    <div className="relative w-full bg-[#EDF0F5] my-6 rounded-2xl">
+    <div className={`relative w-full bg-[#EDF0F5] my-6 rounded-2xl overflow-x-hidden sm:${toggleShared ? 'hidden': ''}`}>
       <div className="sticky bg-[#EDF0F5] bg-opacity-90 z-50 border-b-1 border-b-[#d4d7da] w-full h-[101px] rounded-t-2xl flex flex-row justify-between items-center px-2">
-        {toggleChat === false && (
+        {toggleChat === false && activeChat  && (
           <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleChat(prev => !prev)}>
             <IoIosArrowForward />
           </button>
@@ -155,7 +155,7 @@ const ChatContent = () => {
         ))}
       </div>
       <div className="flex justify-center items-center w-full">
-        <div className="absolute bottom-5 w-[1039px] z-50">
+        <div className="absolute bottom-5 w-full xl:w-[1039px] lg:w-[600px] md:w-96 z-50 sm:w-4/5">
           <form onSubmit={onSubmitForm}>
             <label
               htmlFor="message"

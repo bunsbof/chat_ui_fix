@@ -1,7 +1,6 @@
 import React from "react";
 
 import { IoIosArrowForward } from "react-icons/io";
-import { AiFillFolder } from "react-icons/ai";
 import { RiMovieLine } from "react-icons/ri";
 import { RxDotsVertical } from "react-icons/rx";
 import { ImFilesEmpty } from "react-icons/im";
@@ -14,7 +13,7 @@ import { useStateContext } from "../../context/ContextProvider";
 const SharedFiles = () => {
   const {setToggleShared} = useStateContext()
   return (
-    <div className="flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-96">
+    <div className="flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-96 md:w-full sm:w-full">
       <div className="flex flex-row items-start h-36 pt-16 navChat relative">
         <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleShared(prev => !prev)}>
           <IoIosArrowForward />
@@ -47,19 +46,21 @@ const SharedFiles = () => {
         </div>
 
         <div className="flex flex-col justify-between items-center w-full h-96 space-y-1 overflow-y-auto">
-          <div className="flex flex-row justify-between items-center w-full rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
+          <div className="flex flex-row justify-between items-center w-full h-full pl-6 rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
             <div className="h-14 w-14 bg-[#DFE1F9] rounded-lg flex justify-center items-center">
               <ImFilesEmpty className="text-2xl font-bold text-[#5A68DF]" />
             </div>
-            <div className="flex-start flex-col justify-start items-center">
+            <div>
+            <div className="flex-start flex-col">
               <h3 className="text-xl font-bold text-black">Documents</h3>
               <p className="text-gray-400 text-md truncate">126 files, 193MB</p>
+            </div>
             </div>
             <div className="h-14 w-14 rounded-lg flex justify-center items-center">
               <IoIosArrowForward className="text-2xl font-bold text-gray-500" />
             </div>
           </div>
-          <div className="flex flex-row justify-between items-center w-full rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
+          <div className="flex flex-row justify-between items-center w-full h-full pl-6 rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
             <div className="h-14 w-14 bg-[#F4EACF] rounded-lg flex justify-center items-center">
               <MdInsertPhoto className="text-2xl font-bold text-[#C4B07A]" />
             </div>
@@ -71,7 +72,7 @@ const SharedFiles = () => {
               <IoIosArrowForward className="text-2xl font-bold text-gray-500" />
             </div>
           </div>
-          <div className="flex flex-row justify-between items-center w-full rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
+          <div className="flex flex-row justify-between items-center w-full h-full pl-6 rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
             <div className="h-14 w-14 bg-[#E4F7F9] rounded-lg flex justify-center items-center">
               <RiMovieLine className="text-2xl font-bold text-[#50B0BA]" />
             </div>
@@ -83,7 +84,7 @@ const SharedFiles = () => {
               <IoIosArrowForward className="text-2xl font-bold text-gray-500" />
             </div>
           </div>
-          <div className="flex flex-row justify-between items-center w-full rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
+          <div className="flex flex-row justify-between items-center w-full h-full pl-6 rouned-lg hover:bg-[#F7F8FA] hover:rounded-lg">
             <div className="h-14 w-14 bg-[#FFE0DA] rounded-lg flex justify-center items-center">
               <BsFile className="text-2xl font-bold text-[#BE6E5F]" />
             </div>

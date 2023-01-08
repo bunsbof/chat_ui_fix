@@ -9,12 +9,16 @@ import { useStateContext } from "../context/ContextProvider";
 import { useParams } from "react-router-dom";
 
 const Chat = () => {
-  const { activeChat, setActiveChat, toggleChat, toggleShared } =
+  const { activeChat, setActiveChat, toggleChat, toggleShared, setToggleChat } =
     useStateContext();
   const { conversationId } = useParams();
 
   useEffect(() => {
-    if (conversationId !== undefined) setActiveChat(true);
+    if (conversationId) setActiveChat(true)
+    else {
+      setActiveChat(false)
+      setToggleChat(true)
+    }
   }, [conversationId]);
 
   return (

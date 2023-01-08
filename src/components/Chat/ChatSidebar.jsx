@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 import { FiSettings } from "react-icons/fi";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RxDotsVertical } from "react-icons/rx";
 
-import {useStateContext} from '../../context/ContextProvider'
+import { useStateContext } from "../../context/ContextProvider";
 
 import avatar from "../../assets/avatar.jpg";
 
@@ -84,15 +84,20 @@ const conversations = [
 ];
 
 const ChatSidebar = () => {
-
-  const {setToggleChat} = useStateContext()
+  const { activeChat, setToggleChat } = useStateContext();
+  const { conversationId } = useParams();
 
   return (
-    <div className="flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-96">
+    <div className={`flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-96 sm:w-full lg:md:${activeChat ? 'hidden': ''}`}>
       <div className="flex flex-row items-start h-36 pt-16 relative navChat">
-        <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleChat(prev => !prev)}>
-          <IoIosArrowBack />
-        </button>
+        {conversationId && (
+          <button
+            className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky"
+            onClick={() => setToggleChat((prev) => !prev)}
+          >
+            <IoIosArrowBack />
+          </button>
+        )}
         <h2 className="text-xl pl-8">Chat</h2>
       </div>
       <div className="flex flex-col justify-around py-6 items-center h-1/4">
@@ -144,7 +149,7 @@ const ChatSidebar = () => {
               <Link
                 to={`/message/${val.id}`}
                 key={idx}
-                className="flex flex-row justify-around py-3 px-16 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]"
+                className="flex flex-row md:justify-around w-full py-3 px-4 sm:pl-6 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]"
               >
                 <img
                   src={val.image}
@@ -152,8 +157,8 @@ const ChatSidebar = () => {
                   className="w-11 h-11 rounded-full"
                 />
                 {/* status here */}
-                <div className="px-3 w-full flex flex-col justify-between">
-                  <h5 className="text-xl text-bold truncate">{val.name}</h5>
+                <div className="px-3 w-full sm:w-4/6 flex flex-col justify-between">
+                  <h5 className="text-xl max-w-xs text-bold truncate">{val.name}</h5>
                   <p className="text-sm text-gray-400 truncate">
                     {val.latestMessage}
                   </p>
