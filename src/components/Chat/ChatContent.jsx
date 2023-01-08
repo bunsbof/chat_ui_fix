@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FiSend } from "react-icons/fi";
 import { BsEmojiSmile } from "react-icons/bs";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -8,7 +8,7 @@ import Message from "./Message";
 import { useParams } from "react-router-dom";
 import { useStateContext } from "../../context/ContextProvider";
 
-const message = [
+const messages = [
   {
     name: "Jonjet Kalson",
     content: "Lorem ipsum dolor sit amet consectetur adipisicing elit 😒",
@@ -119,18 +119,39 @@ const message = [
 
 const ChatContent = () => {
   const { conversationId } = useParams();
-  const { activeChat, toggleChat, setToggleChat, toggleShared, setToggleShared } =
-    useStateContext();
+  const {
+    activeChat,
+    toggleChat,
+    setToggleChat,
+    toggleShared,
+    setToggleShared,
+  } = useStateContext();
+
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const onSubmitForm = (e) => {
     e.preventDefault();
   };
 
   return (
-    <div className={`relative w-full bg-[#EDF0F5] my-6 rounded-2xl overflow-x-hidden sm:${toggleShared ? 'hidden': ''}`}>
+    <div
+      className={`relative w-full bg-[#EDF0F5] my-6 rounded-2xl overflow-x-hidden sm:${
+        toggleShared ? "hidden" : ""
+      }`}
+    >
       <div className="sticky bg-[#EDF0F5] bg-opacity-90 z-50 border-b-1 border-b-[#d4d7da] w-full h-[101px] rounded-t-2xl flex flex-row justify-between items-center px-2">
-        {toggleChat === false && activeChat  && (
-          <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleChat(prev => !prev)}>
+        {toggleChat === false && activeChat && (
+          <button
+            className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky"
+            onClick={() => setToggleChat((prev) => !prev)}
+          >
             <IoIosArrowForward />
           </button>
         )}
@@ -138,13 +159,16 @@ const ChatContent = () => {
           The Conversation ID is {conversationId}
         </h2>
         {toggleShared === false && (
-          <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleShared(prev => !prev)}>
+          <button
+            className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky"
+            onClick={() => setToggleShared((prev) => !prev)}
+          >
             <IoIosArrowBack />
           </button>
         )}
       </div>
       <div className="flex flex-col h-[720px] rounded-2xl space-y-1 overflow-y-auto">
-        {message.map((val, idx) => (
+        {messages.map((val, idx) => (
           <Message
             key={idx}
             img={val.avatar}
@@ -153,9 +177,10 @@ const ChatContent = () => {
             datetime={val.dateTime}
           />
         ))}
+        <div ref={messagesEndRef} />
       </div>
       <div className="flex justify-center items-center w-full">
-        <div className="absolute bottom-5 w-full xl:w-[1039px] lg:w-[600px] md:w-96 z-50 sm:w-4/5">
+        <div className="absolute bottom-5 w-full md:w-4/5 z-50 sm:w-4/5">
           <form onSubmit={onSubmitForm}>
             <label
               htmlFor="message"

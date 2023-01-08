@@ -13,7 +13,7 @@ import { useStateContext } from "../../context/ContextProvider";
 const SharedFiles = () => {
   const {setToggleShared} = useStateContext()
   return (
-    <div className="flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-96 md:w-full sm:w-full">
+    <div className="flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-60 md:w-full sm:w-full">
       <div className="flex flex-row items-start h-36 pt-16 navChat relative">
         <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleShared(prev => !prev)}>
           <IoIosArrowForward />

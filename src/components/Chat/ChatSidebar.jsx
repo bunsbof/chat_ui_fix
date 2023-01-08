@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { IoIosArrowBack } from "react-icons/io";
@@ -84,11 +84,22 @@ const conversations = [
 ];
 
 const ChatSidebar = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const { activeChat, setToggleChat } = useStateContext();
   const { conversationId } = useParams();
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [window.innerWidth]);
+
   return (
-    <div className={`flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-96 sm:w-full lg:md:${activeChat ? 'hidden': ''}`}>
+    <div className={`flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-60 sm:w-full lg:md:${activeChat ? 'hidden': ''}`}>
       <div className="flex flex-row items-start h-36 pt-16 relative navChat">
         {conversationId && (
           <button
@@ -150,6 +161,9 @@ const ChatSidebar = () => {
                 to={`/message/${val.id}`}
                 key={idx}
                 className="flex flex-row md:justify-around w-full py-3 px-4 sm:pl-6 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]"
+                onClick={() => {
+                  if(windowWidth <= 1023) setToggleChat(prev => !prev)
+                }}
               >
                 <img
                   src={val.image}
