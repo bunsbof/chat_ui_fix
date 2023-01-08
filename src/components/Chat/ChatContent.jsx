@@ -1,8 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { FiSend } from "react-icons/fi";
-import { BsEmojiSmile } from "react-icons/bs";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { ImAttachment } from "react-icons/im";
+import {
+  FiSend,
+  BsEmojiSmile,
+  IoIosArrowBack,
+  IoIosArrowForward,
+  ImAttachment,
+} from "../../components/Icons";
+
 import avatar from "../../assets/avatar.jpg";
 import Message from "./Message";
 import { useParams } from "react-router-dom";

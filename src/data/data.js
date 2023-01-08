@@ -1,4 +1,4 @@
-import { BsPeopleFill } from "react-icons/bs";
+import {BsPeopleFill} from '../components/Icons'
 
 export const links = [
   {

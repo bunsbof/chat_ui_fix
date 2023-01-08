@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-
-import { IoIosArrowBack } from "react-icons/io";
-import { FiSettings } from "react-icons/fi";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { AiOutlinePlus } from "react-icons/ai";
-import { RxDotsVertical } from "react-icons/rx";
+import {
+  IoIosArrowBack,
+  FiSettings,
+  HiOutlineMagnifyingGlass,
+  AiOutlinePlus,
+  RxDotsVertical,
+} from "../../components/Icons";
 
 import { useStateContext } from "../../context/ContextProvider";
 
@@ -84,11 +85,18 @@ const conversations = [
 ];
 
 const ChatSidebar = () => {
-  const { activeChat, setToggleChat, windowWidth, setWindowWidth } = useStateContext();
+  const { activeChat, setToggleChat, windowWidth, setWindowWidth } =
+    useStateContext();
   const { conversationId } = useParams();
 
   return (
-    <div className={`flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-60 sm:w-full lg:md:${activeChat && windowWidth <= 1023 && setToggleChat(prev => !prev) ? 'hidden': ''}`}>
+    <div
+      className={`flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-60 sm:w-full lg:md:${
+        activeChat && windowWidth <= 1023 && setToggleChat((prev) => !prev)
+          ? "hidden"
+          : ""
+      }`}
+    >
       <div className="flex flex-row items-start h-36 pt-16 relative navChat">
         {conversationId && (
           <button
@@ -151,7 +159,7 @@ const ChatSidebar = () => {
                 key={idx}
                 className="flex flex-row md:justify-around w-full py-3 px-4 sm:pl-6 rounded-lg hover:bg-[#F7F8FA] focus:bg-[#F7F8FA]"
                 onClick={() => {
-                  if(windowWidth <= 1023) setToggleChat(prev => !prev)
+                  if (windowWidth <= 1023) setToggleChat((prev) => !prev);
                 }}
               >
                 <img
@@ -161,7 +169,9 @@ const ChatSidebar = () => {
                 />
                 {/* status here */}
                 <div className="px-3 w-full sm:w-4/6 flex flex-col justify-between">
-                  <h5 className="text-xl max-w-xs text-bold truncate">{val.name}</h5>
+                  <h5 className="text-xl max-w-xs text-bold truncate">
+                    {val.name}
+                  </h5>
                   <p className="text-sm text-gray-400 truncate">
                     {val.latestMessage}
                   </p>

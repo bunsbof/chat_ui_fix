@@ -1,21 +1,26 @@
 import React from "react";
 
-import { IoIosArrowForward } from "react-icons/io";
-import { RiMovieLine } from "react-icons/ri";
-import { RxDotsVertical } from "react-icons/rx";
-import { ImFilesEmpty } from "react-icons/im";
-import { MdInsertPhoto } from "react-icons/md";
-import { BsFile } from "react-icons/bs";
+import {
+  IoIosArrowForward,
+  RxDotsVertical,
+  RiMovieLine,
+  ImFilesEmpty,
+  MdInsertPhoto,
+  BsFile,
+} from "../../components/Icons";
 
 import avatar from "../../assets/avatar.jpg";
 import { useStateContext } from "../../context/ContextProvider";
 
 const SharedFiles = () => {
-  const {setToggleShared} = useStateContext()
+  const { setToggleShared } = useStateContext();
   return (
     <div className="flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-60 md:w-full sm:w-full">
       <div className="flex flex-row items-start h-36 pt-16 navChat relative">
-        <button className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky" onClick={() => setToggleShared(prev => !prev)}>
+        <button
+          className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky"
+          onClick={() => setToggleShared((prev) => !prev)}
+        >
           <IoIosArrowForward />
         </button>
         <h2 className="text-xl pl-8">Shared files</h2>
@@ -51,10 +56,12 @@ const SharedFiles = () => {
               <ImFilesEmpty className="text-2xl font-bold text-[#5A68DF]" />
             </div>
             <div>
-            <div className="flex-start flex-col">
-              <h3 className="text-xl font-bold text-black">Documents</h3>
-              <p className="text-gray-400 text-md truncate">126 files, 193MB</p>
-            </div>
+              <div className="flex-start flex-col">
+                <h3 className="text-xl font-bold text-black">Documents</h3>
+                <p className="text-gray-400 text-md truncate">
+                  126 files, 193MB
+                </p>
+              </div>
             </div>
             <div className="h-14 w-14 rounded-lg flex justify-center items-center">
               <IoIosArrowForward className="text-2xl font-bold text-gray-500" />

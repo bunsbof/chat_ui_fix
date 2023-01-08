@@ -1,5 +1,5 @@
 import React from "react";
-import { VscDebugBreakpointFunction } from "react-icons/vsc";
+import {VscDebugBreakpointFunction} from '../../components/Icons'
 
 const Message = ({ img, user, content, datetime }) => {
   return (
