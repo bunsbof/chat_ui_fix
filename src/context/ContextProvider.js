@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const StateContext = createContext();
 
@@ -12,6 +12,17 @@ export const ContextProvider = ({ children }) => {
   const [activeBtn, setActiveBtn] = useState("#E0F4F1");
   const [toggleChat, setToggleChat] = useState(false);
   const [toggleShared, setToggleShared] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [window.innerWidth]);
 
   return (
     <StateContext.Provider
@@ -24,6 +35,8 @@ export const ContextProvider = ({ children }) => {
         setToggleChat,
         toggleShared,
         setToggleShared,
+        windowWidth,
+        setWindowWidth,
       }}
     >
       {children}

@@ -134,7 +134,7 @@ const ChatContent = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, []);
 
   const onSubmitForm = (e) => {
     e.preventDefault();

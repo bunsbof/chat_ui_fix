@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { IoIosArrowBack } from "react-icons/io";
@@ -84,22 +84,11 @@ const conversations = [
 ];
 
 const ChatSidebar = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const { activeChat, setToggleChat } = useStateContext();
+  const { activeChat, setToggleChat, windowWidth, setWindowWidth } = useStateContext();
   const { conversationId } = useParams();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [window.innerWidth]);
-
   return (
-    <div className={`flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-60 sm:w-full lg:md:${activeChat ? 'hidden': ''}`}>
+    <div className={`flex flex-col w-full px-4 overflow-y-hidden flex-shrink-0 xl:w-96 lg:w-60 sm:w-full lg:md:${activeChat && windowWidth <= 1023 && setToggleChat(prev => !prev) ? 'hidden': ''}`}>
       <div className="flex flex-row items-start h-36 pt-16 relative navChat">
         {conversationId && (
           <button
