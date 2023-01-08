@@ -146,7 +146,7 @@ const ChatContent = () => {
         toggleShared ? "hidden" : ""
       }`}
     >
-      <div className="sticky bg-[#EDF0F5] bg-opacity-90 z-50 border-b-1 border-b-[#d4d7da] w-full h-[101px] rounded-t-2xl flex flex-row justify-between items-center px-2">
+      <div className="absolute bg-[#EDF0F5] bg-opacity-90 z-50 border-b-1 border-b-[#d4d7da] w-full h-[101px] rounded-t-2xl flex flex-row justify-between items-center px-2">
         {toggleChat === false && activeChat && (
           <button
             className="bg-[#E0F4F1] text-[#00A186] w-8 h-8 flex justify-center items-center rounded-md sticky"
@@ -179,35 +179,36 @@ const ChatContent = () => {
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <div className="flex justify-center items-center w-full">
-        <div className="absolute bottom-5 w-full md:w-4/5 z-50 sm:w-4/5">
-          <form onSubmit={onSubmitForm}>
-            <label
-              htmlFor="message"
-              className="mb-2 text-sm font-medium text-gray-600 sr-only"
-            >
-              Write your message
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="message"
-                className="block w-full h-16 p-4 pl-10 text-sm text-gray-600 rounded-2xl bg-white outline-none"
-                placeholder="Write your message..."
-              />
-              <div className="absolute inset-y-0 right-0 flex flex-row justify-between items-center py-3 pr-3 w-32 text-gray-400">
-                <BsEmojiSmile className="text-lg" />
-                <ImAttachment className="text-lg" />
-                <button
-                  type="submit"
-                  className="bg-[#00A389] text-white text-lg h-full hover:bg-green-700 outline-none font-medium rounded-xl px-4 py-2"
-                >
-                  <FiSend />
-                </button>
-              </div>
+      <div className="relative flex justify-center items-center w-full h-1/6">
+        <form
+          onSubmit={onSubmitForm}
+          className="absolute top-28 w-full md:w-4/5 z-50 sm:w-4/5"
+        >
+          <label
+            htmlFor="message"
+            className="mb-2 text-sm font-medium text-gray-600 sr-only"
+          >
+            Write your message
+          </label>
+          <div className="relative">
+            <input
+              type="text"
+              id="message"
+              className="block w-full h-16 p-4 pl-10 text-sm text-gray-600 rounded-2xl bg-white outline-none"
+              placeholder="Write your message..."
+            />
+            <div className="absolute inset-y-0 right-0 flex flex-row justify-between items-center py-3 pr-3 w-32 text-gray-400">
+              <BsEmojiSmile className="text-lg" />
+              <ImAttachment className="text-lg" />
+              <button
+                type="submit"
+                className="bg-[#00A389] text-white text-lg h-full hover:bg-green-700 outline-none font-medium rounded-xl px-4 py-2"
+              >
+                <FiSend />
+              </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );
